@@ -13,9 +13,11 @@ TechArea_categories = [
     "cloud computing",
     "common packages",
     "configuration management",
+    "deep learning",
     "desktop",
     "embedded",
     "enterprise computing",
+    "hardware development",
     "mobile",
     "networking",
     "security",
@@ -52,6 +54,8 @@ def check_techarea(techarea):
     message = ''
     if (len(talist) > 0):
         addkey(talist[0])   # add primary keyword
+    else:
+        print("*** No techarea string: %s", techarea)
     for s in talist:
         if not(s in TechArea_categories):    # check techarea string
             message = message + "Category string error: '%s'\n" % (s)
@@ -66,13 +70,14 @@ def main(csvfile, format_check, techarea_check):
     # main processing
     with open(csvfile, 'r') as csvf:
         reader = csv.DictReader(csvf)
-        linecount = 0
+        linecount = 1
         error_count = 0
         for row in reader:
-            linecount += 1
             name = row['Package Name']
-            if (name == ''):
+            if not name:
                 continue  # ignore if no name
+            linecount += 1
+            #print("Name: ", name)
             if (format_check):  # should check format
                 formatmsg = check_format(
                     row['Nominated By...'], row['Nomination type'],
