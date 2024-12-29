@@ -70,7 +70,7 @@ def main(csvfile, format_check, techarea_check):
     # main processing
     with open(csvfile, 'r') as csvf:
         reader = csv.DictReader(csvf)
-        linecount = 1
+        linecount = 0
         error_count = 0
         for row in reader:
             name = row['Package Name']
