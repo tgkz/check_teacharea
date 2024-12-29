@@ -1,5 +1,5 @@
 # ignore test data
-./test/*
-./OLD/*
-./__pycache__/*
+test/
+OLD/
+__pycache__/
 
